@@ -1,0 +1,87 @@
+.popup{
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100vh;
+ background-color: rgba($color: #000000, $alpha: 0.4);
+ z-index: 3;
+
+ 
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+ .popup-inner{
+    animation: fadeInDown 1s 0s backwards;
+    transition: all;
+    padding: 32px;
+    width: 80%;
+    max-width: 500px;
+    background-color: #FFF;
+    border-radius: 8px;
+
+    .popup-heading{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .popup-form{
+        margin-top: 15px;
+        button{
+            width: 100%;
+            max-width: 500px;
+            height: 50px;
+            padding: 10px;
+            border:none;
+            background-color: orange;
+            color: #000000;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.6rem;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.2s;
+
+            &:hover{
+                background-color: rgba($color: red, $alpha: 0.6);
+                color: #FFF;
+            }
+        }
+    }
+
+    .success-message{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: green;
+        height: 50px;
+        color: #FFF;
+        animation: zoomIn 0.3s;
+        transition: all 1s 0.2s;
+        h1{
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
+    }
+
+
+    
+ }
+}
+
+@media screen and (max-width:500px){
+    .popup{
+        .popup-inner{
+            min-width: 100%;
+
+            .success-message{
+                h1{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

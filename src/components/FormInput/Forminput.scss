@@ -1,0 +1,30 @@
+.form-input{
+    label{
+        color: grey;
+        font-size: 1.3rem;
+    }
+    input{
+        display: inline;
+        padding: 12px;
+        margin: 5px 0px;
+        width: 100%;
+        font-size: 1.3rem;
+        border: 1px solid gray;
+        border-radius: 4px;
+
+       
+    }
+    span{
+        color: red;
+        display: block;
+        margin-bottom: 7px;
+        font-weight: 500;
+        font-size: 1.1rem;
+        display: none;
+    }
+
+    input:invalid ~ span{
+        display: block;
+    }
+}
+
