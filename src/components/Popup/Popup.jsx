@@ -19,6 +19,7 @@ const Popup = (props) => {
     const [values, setValues] = useState(initialState);
 
     const [submitted,setSubmitted] = useState(false)
+    const [ifError,setIfError] = useState(false)
 
     const inputs = [
         {
@@ -28,7 +29,7 @@ const Popup = (props) => {
             placeholder: "name",
             errorMessage:'name should be 3-16 characters',
             required:true,
-            pattern:'^([0-9]*[a-zA-Z]){3,}[0-9]*$',
+            pattern:'^([0-9]*[a-zA-Z_ ]){3,}[0-9]*$',
             label: "Name",
         },
         {
@@ -47,7 +48,7 @@ const Popup = (props) => {
             placeholder: "comment",
             errorMessage:'Please enter more than 5 characters',
             required:true,
-            pattern:'^([0-9]*[a-zA-Z]){5,}[0-9]*$',
+            pattern:'^([0-9]*[a-zA-Z_ ]){5,}[0-9]*$',
             label: "Comment",
         },
     ];
@@ -55,9 +56,15 @@ const Popup = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const result = await submitForm(values)
-        console.log(result);
-        setSubmitted(true);
-        setValues(initialState)
+
+        if(result){ 
+            setSubmitted(true)
+            setValues(initialState)
+        }
+        else{
+            setIfError(true)
+        }
+       
     };
 
     const onChange = (e) => {
@@ -70,9 +77,10 @@ const Popup = (props) => {
     const submitForm = async (data)=>{
         try{            
             const result = await axios.post('http://localhost:3000/comment-module/comment',data)
-           return result;
+           if(result.data) return true;
+           return false;
         }catch(e){
-            console.log(e)
+            return false;
         }
 
     }
@@ -91,6 +99,9 @@ const Popup = (props) => {
                 </div>
                 {submitted && <div className="success-message">
                     <h1>We have received your comment. Thanks!</h1>
+                </div>}
+                {ifError && <div className="error-message">
+                    <h1>Something went wrong, Please try again!</h1>
                 </div>}
                 <div className="popup-form">
                     <form onSubmit={handleSubmit}>

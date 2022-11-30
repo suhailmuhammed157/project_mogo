@@ -67,6 +67,22 @@
         }
     }
 
+    .error-message{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        height: 50px;
+        color: #FFF;
+        animation: zoomIn 0.3s;
+        transition: all 1s 0.2s;
+        h1{
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
+    }
+
 
     
  }
@@ -78,6 +94,12 @@
             min-width: 100%;
 
             .success-message{
+                h1{
+                    font-size: 1.2rem;
+                }
+            }
+
+            .error-message{
                 h1{
                     font-size: 1.2rem;
                 }
